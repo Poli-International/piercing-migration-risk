@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <script>
+    if (window.self !== window.top) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      window.addEventListener('message', function(e) {
+        if (e.data && e.data.type === 'poli-theme') {
+          document.documentElement.setAttribute('data-theme', e.data.light ? 'light' : 'dark');
+        }
+      });
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assess your piercing's migration and rejection risk across 7 weighted factors: placement, material, sizing, aftercare, trauma, skin type, and healing stage.">
+  <title>Piercing Migration & Rejection Risk Calculator | Poli International</title>
+  <link rel="stylesheet" href="/tools/piercing-migration-risk/css/style.css">
+</head>
+<body>
+
+<div class="tool-wrapper">
+
+  <header class="tool-header">
+    <div class="tool-header__badge">⚠️ Migration Risk Assessment</div>
+    <h1>Piercing Migration &amp; Rejection Risk</h1>
+    <p>
+      Answer 7 questions about your piercing to get a weighted risk score across
+      placement, material, sizing, aftercare, and healing factors.
+    </p>
+  </header>
+
+  <div class="form-card">
+    <div id="risk-form"></div>
+    <button id="calc-btn" class="btn btn-primary">⚠️ Calculate Risk Score</button>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="disclaimer">
+    <strong>Important:</strong> This tool provides a general educational risk assessment only — it cannot
+    diagnose an actively migrating or infected piercing. If you suspect active migration, excessive scar
+    tissue formation, or infection, consult a professional piercer or healthcare provider immediately.
+    Never attempt to remove a deeply migrated piercing yourself.
+  </div>
+
+</div>
+
+<script src="/tools/piercing-migration-risk/js/app.js"></script>
+</body>
+</html>
