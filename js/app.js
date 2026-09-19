@@ -80,11 +80,17 @@ const FACTORS = [
   },
 ];
 
-// Score → risk tier
+// Score → risk tier.
+// Achievable score range is 15 (every factor at its lowest option) to 63
+// (every factor at its highest option) — the boundaries below span that
+// actual range. A threshold below 15 made "Low" impossible to reach: even
+// the safest possible answers scored 15 and landed in "Moderate", which
+// produced advice telling someone who had already chosen BioFlex/titanium
+// to "consider switching to BioFlex".
 function getTier(score) {
-  if (score <= 14)  return { tier: 'Low',       cls: 'tier-low',       pct: 20 };
-  if (score <= 22)  return { tier: 'Moderate',  cls: 'tier-moderate',  pct: 50 };
-  if (score <= 32)  return { tier: 'High',      cls: 'tier-high',      pct: 78 };
+  if (score <= 26)  return { tier: 'Low',       cls: 'tier-low',       pct: 20 };
+  if (score <= 38)  return { tier: 'Moderate',  cls: 'tier-moderate',  pct: 50 };
+  if (score <= 50)  return { tier: 'High',      cls: 'tier-high',      pct: 78 };
   return               { tier: 'Very High', cls: 'tier-vhigh',     pct: 96 };
 }
 
