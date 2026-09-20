@@ -1,0 +1,371 @@
+/**
+ * @license
+ * Poli International: Piercing Migration & Rejection Risk Tool Print Stylesheet
+ * Optimized for black & white / greyscale studio handouts and client reference.
+ */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 8mm 10mm;
+  }
+
+  /* Hide interactive web chrome & auxiliary web-only sections for single-page printout */
+  header .top-bar,
+  .btn,
+  .btn-print,
+  .form-actions,
+  #factors-form-container,
+  #form-add-measurement,
+  .tab-buttons-wrap,
+  .btn-delete-entry,
+  .disclaimer-card,
+  nav,
+  select,
+  input,
+  button,
+  #factors-section,
+  #surface-explanation-container,
+  #placement-guidance-container,
+  #piercer-actions-container,
+  #rejection-scar-container,
+  #embedding-container {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-size: 9pt !important;
+    line-height: 1.25 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .tool-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .tool-header {
+    border-bottom: 1.5pt solid #000000 !important;
+    margin-bottom: 8pt !important;
+    padding-bottom: 4pt !important;
+  }
+
+  .tool-title {
+    color: #000000 !important;
+    font-size: 14pt !important;
+    margin-bottom: 2pt !important;
+    font-weight: 800 !important;
+  }
+
+  .tool-subtitle {
+    color: #222222 !important;
+    font-size: 8pt !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Section cards */
+  .section-card {
+    background: #ffffff !important;
+    border: 1pt solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 6pt 8pt !important;
+    margin-bottom: 8pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .section-title {
+    color: #000000 !important;
+    font-size: 10.5pt !important;
+    border-bottom: 1pt solid #000000 !important;
+    padding-bottom: 2pt !important;
+    margin-bottom: 5pt !important;
+    font-weight: 700 !important;
+  }
+
+  .section-sub {
+    color: #333333 !important;
+    font-size: 8pt !important;
+    margin-bottom: 5pt !important;
+  }
+
+  /* Signs grid in 4-column or 2x2 compact layout on paper */
+  .signs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 5pt !important;
+  }
+
+  .sign-card {
+    background: #ffffff !important;
+    border: 1pt solid #222222 !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .sign-diagram {
+    background: transparent !important;
+    border-bottom: 1pt solid #666666 !important;
+    padding: 2pt !important;
+    text-align: center;
+  }
+
+  .sign-svg {
+    max-width: 100% !important;
+    height: 48pt !important;
+  }
+
+  /* Crisp line overrides without ink-heavy fills */
+  .sign-svg rect,
+  .sign-svg path,
+  .sign-svg circle,
+  .sign-svg line {
+    stroke: #000000 !important;
+    stroke-width: 1.5pt !important;
+  }
+
+  .sign-svg [fill]:not([fill="none"]):not([fill="transparent"]) {
+    fill: #f4f4f4 !important;
+  }
+
+  .sign-body {
+    padding: 4pt !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    justify-content: space-between !important;
+  }
+
+  .sign-title {
+    color: #000000 !important;
+    font-size: 8.5pt !important;
+    font-weight: 700 !important;
+    margin-bottom: 2pt !important;
+    line-height: 1.15 !important;
+  }
+
+  .sign-desc {
+    color: #222222 !important;
+    font-size: 7.5pt !important;
+    margin-bottom: 3pt !important;
+    line-height: 1.2 !important;
+  }
+
+  .sign-action {
+    background: transparent !important;
+    color: #000000 !important;
+    border: 1pt solid #000000 !important;
+    font-size: 7pt !important;
+    font-weight: bold !important;
+    padding: 2pt 4pt !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  /* Urgent card */
+  .urgent-card {
+    background: #ffffff !important;
+    border: 1.5pt solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 5pt 7pt !important;
+    margin-bottom: 6pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .urgent-title {
+    color: #000000 !important;
+    font-size: 9.5pt !important;
+    margin-bottom: 2pt !important;
+    font-weight: 800 !important;
+  }
+
+  .urgent-card p {
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .urgent-cta {
+    background: transparent !important;
+    border: 1pt solid #000000 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+    font-size: 7.5pt !important;
+    padding: 2pt 5pt !important;
+    display: inline-block !important;
+  }
+
+  /* Measurement table */
+  .tracker-table {
+    border: 1pt solid #000000 !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8pt !important;
+  }
+
+  .tracker-table th {
+    background: transparent !important;
+    color: #000000 !important;
+    border: 1pt solid #000000 !important;
+    padding: 3pt 5pt !important;
+    font-weight: bold !important;
+  }
+
+  .tracker-table td {
+    border: 1pt solid #000000 !important;
+    padding: 3pt 5pt !important;
+    color: #000000 !important;
+  }
+
+  .tracker-notice {
+    font-size: 7.5pt !important;
+    color: #333333 !important;
+    margin-top: 4pt !important;
+    font-style: italic !important;
+  }
+
+  /* Remove links underline or URL printing clutter */
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+
+  /* ==========================================================================
+     Studio Consultation Summary Print Layout (Item 1)
+     ========================================================================== */
+  html[data-print-mode="summary"] header,
+  html[data-print-mode="summary"] #factors-section,
+  html[data-print-mode="summary"] #caliper-guidance-container,
+  html[data-print-mode="summary"] #measurement-tracker-container,
+  html[data-print-mode="summary"] #signs-section-container,
+  html[data-print-mode="summary"] #decision-tree-container,
+  html[data-print-mode="summary"] #surface-explanation-container,
+  html[data-print-mode="summary"] #placement-guidance-container,
+  html[data-print-mode="summary"] #piercer-actions-container,
+  html[data-print-mode="summary"] #rejection-scar-container,
+  html[data-print-mode="summary"] #embedding-container {
+    display: none !important;
+  }
+
+  html[data-print-mode="summary"] #studio-consultation-summary {
+    display: block !important;
+    background: #ffffff !important;
+    border: 1.5pt solid #000000 !important;
+    padding: 8pt 10pt !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  html[data-print-mode="signs"] #studio-consultation-summary {
+    display: none !important;
+  }
+
+  .studio-consultation-summary .btn-print,
+  .studio-consultation-summary button {
+    display: none !important;
+  }
+
+  .summary-header-row {
+    border-bottom: 1.5pt solid #000000 !important;
+    padding-bottom: 6pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  .summary-title-block h3 {
+    font-size: 13pt !important;
+    font-weight: 800 !important;
+    color: #000000 !important;
+    margin-bottom: 2pt !important;
+  }
+
+  .summary-title-block p {
+    font-size: 8pt !important;
+    color: #222222 !important;
+  }
+
+  .summary-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  .summary-block {
+    background: #ffffff !important;
+    border: 1pt solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 5pt 7pt !important;
+  }
+
+  .summary-block-title {
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+    border-bottom: 1pt solid #000000 !important;
+    padding-bottom: 2pt !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .summary-data-list {
+    font-size: 8pt !important;
+    color: #000000 !important;
+    line-height: 1.4 !important;
+  }
+
+  .summary-data-list strong {
+    color: #000000 !important;
+  }
+
+  .studio-inspection-box {
+    background: #ffffff !important;
+    border: 1.5pt solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 6pt 8pt !important;
+    margin-top: 8pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .studio-inspection-title {
+    font-size: 9.5pt !important;
+    font-weight: 800 !important;
+    color: #000000 !important;
+    margin-bottom: 4pt !important;
+    border-bottom: 1pt solid #000000 !important;
+    padding-bottom: 2pt !important;
+  }
+
+  .studio-checklist {
+    font-size: 8pt !important;
+    color: #000000 !important;
+    line-height: 1.5 !important;
+    margin-bottom: 6pt !important;
+  }
+
+  .studio-signature-row {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    gap: 12pt !important;
+    margin-top: 8pt !important;
+    padding-top: 6pt !important;
+    border-top: 1pt solid #666666 !important;
+    font-size: 8pt !important;
+  }
+
+  .signature-line {
+    border-bottom: 1pt solid #000000 !important;
+    height: 14pt !important;
+    margin-bottom: 2pt !important;
+  }
+}
+
