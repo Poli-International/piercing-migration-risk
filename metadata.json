@@ -1,0 +1,8 @@
+{
+  "name": "Piercing Migration & Rejection Risk Calculator-V2",
+  "description": "Assess piercing migration and rejection risk across clinical factors. Features multi-piercing profiles, caliper technique guidance, inline trend graphing, triage decision tree, and formatted studio consultation summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
