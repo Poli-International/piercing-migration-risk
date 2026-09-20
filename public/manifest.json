@@ -1,0 +1,10 @@
+{
+  "name": "Piercing Migration & Rejection Risk Calculator",
+  "short_name": "Migration Risk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#12141a",
+  "theme_color": "#12141a",
+  "description": "Assess piercing migration and rejection risk across 6 clinical factors with repeatable measurement log."
+}
