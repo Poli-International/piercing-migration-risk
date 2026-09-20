@@ -1,89 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assess piercing migration and rejection risk across clinical factors. Features multi-piercing profiles, caliper technique guidance, inline trend graphing, triage decision tree, and formatted studio consultation summaries.">
+  <meta property="og:title" content="Piercing Migration & Rejection Risk Calculator | Poli International">
+  <meta property="og:description" content="Assess piercing migration and rejection risk across clinical factors. Features multi-piercing profiles, caliper technique guidance, inline trend graphing, triage decision tree, and formatted studio consultation summaries.">
   <meta name="robots" content="noindex, nofollow">
+  <title>Piercing Migration & Rejection Risk Calculator | Poli International</title>
+
+  <!-- Theme Handshake (Ban 18 & website handshake) -->
   <script>
-    if (window.self !== window.top) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    (function() {
+      var storedTheme = localStorage.getItem('poli_theme');
+      if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
       window.addEventListener('message', function(e) {
         if (e.data && e.data.type === 'poli-theme') {
           document.documentElement.setAttribute('data-theme', e.data.light ? 'light' : 'dark');
         }
       });
-    }
+    })();
   </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Assess your piercing's migration and rejection risk across 7 weighted factors: placement, material, sizing, aftercare, trauma, skin type, and healing stage.">
-  <title>Piercing Migration & Rejection Risk Calculator | Poli International</title>
-  <link rel="stylesheet" href="/tools/piercing-migration-risk/css/style.css">
-<script type='application/ld+json'>
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Piercing Migration & Rejection Risk Calculator",
-  "url": "https://poliinternational.com/tools/piercing-migration-risk/",
-  "description": "Assess piercing migration and rejection risk across 7 weighted factors: placement, jewelry material, sizing, aftercare, trauma, skin type, healing.",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript. Requires HTML5.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "Poli International",
-    "url": "https://poliinternational.com"
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "Poli International",
-    "url": "https://poliinternational.com"
-  },
-  "maintainer": {
-    "@type": "Organization",
-    "name": "Poli International",
-    "url": "https://poliinternational.com"
-  },
-  "dateModified": "2026-07-01",
-  "license": "https://opensource.org/licenses/MIT",
-  "isAccessibleForFree": true
-}
-</script>
-<link rel="stylesheet" href="/tools/shared/print.css" media="print">
-  <link rel="stylesheet" href="/tools/shared/a11y.css">
-  </head>
+
+  <!-- Stylesheets -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/a11y.css">
+  <link rel="stylesheet" href="./css/print.css" media="print">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Piercing Migration & Rejection Risk Calculator",
+    "url": "https://poliinternational.com/tools/piercing-migration-risk/index.html",
+    "description": "Assess piercing migration and rejection risk across 6 clinical factors, record repeat measurements over time, and identify early warning signs.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "author": {
+      "@type": "Organization",
+      "name": "Poli International",
+      "url": "https://poliinternational.com"
+    },
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
 <body>
 
-<div class="tool-wrapper">
+<main class="tool-wrapper" id="app-main">
 
+  <!-- Header & Top Controls -->
   <header class="tool-header">
-    <div class="tool-header__badge">⚠️ Migration Risk Assessment</div>
-    <h1>Piercing Migration &amp; Rejection Risk</h1>
-    <p>
-      Answer 7 questions about your piercing to get a weighted risk score across
-      placement, material, sizing, aftercare, and healing factors.
+    <div class="top-bar">
+      <span class="badge" data-i18n="app.badge">Clinical &amp; Studio Guide V2</span>
+      <div class="header-controls">
+        <label for="language-select" class="lang-control">
+          <span data-i18n="app.langLabel">Language</span>:
+          <select id="language-select" class="select-compact" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="nl">Nederlands</option>
+          </select>
+        </label>
+        <button type="button" id="btn-print-signs" class="btn-print" data-i18n="app.printBtn">Print Signs &amp; Evidence Guide</button>
+        <button type="button" id="btn-header-print-summary" class="btn-print" data-i18n="print.btnExportSummary">Export / Print Studio Summary</button>
+      </div>
+    </div>
+    <h1 class="tool-title" data-i18n="app.heading">Piercing Migration &amp; Rejection Risk</h1>
+    <p class="tool-subtitle" data-i18n="app.subheading">
+      Evaluate anatomical, jewelry, and mechanical factors that influence migration and rejection. Identify warning signs early, record repeat measurements over time, and know when to see your piercer.
     </p>
   </header>
 
-  <div class="form-card">
-    <div id="risk-form"></div>
-    <button id="calc-btn" class="btn btn-primary">⚠️ Calculate Risk Score</button>
-  </div>
+  <!-- Urgent Embedding Callout (Requirement D) -->
+  <section id="embedding-container" aria-live="polite"></section>
 
-  <div id="results"></div>
+  <!-- Section 1 & 2: Factor Assessment & What You Can Change -->
+  <section id="factors-section" class="section-card">
+    <h2 class="section-title" data-i18n="nav.factors">Risk Factor Assessment</h2>
+    <div id="factors-form-container"></div>
+    <div id="factors-results-container"></div>
+  </section>
 
-  <div class="disclaimer">
-    <strong>Important:</strong> This tool provides a general educational risk assessment only — it cannot
-    diagnose an actively migrating or infected piercing. If you suspect active migration, excessive scar
-    tissue formation, or infection, consult a professional piercer or healthcare provider immediately.
-    Never attempt to remove a deeply migrated piercing yourself.
-  </div>
+  <!-- Caliper Measurement Guidance (Item 5) -->
+  <section id="caliper-guidance-container"></section>
 
-</div>
+  <!-- Section A & B: Repeatable Measurement Tracker & Multi-Profile Management & Trend Graph (Items 1, 2, 3) -->
+  <section id="measurement-tracker-container"></section>
 
-<script src="/tools/piercing-migration-risk/js/app.js"></script>
+  <!-- Formatted Studio Print & Consultation Summary (Item 1) -->
+  <section id="studio-consultation-summary" class="studio-consultation-summary"></section>
+
+  <!-- Section 3 & F: Signs of Migration (Illustrated with SVGs) -->
+  <section id="signs-section-container"></section>
+
+  <!-- Acute Rejection vs. Irritation Decision Tree (Item 4) -->
+  <section id="decision-tree-container"></section>
+
+  <!-- Section 4: Surface & Flat Placements Explained -->
+  <section id="surface-explanation-container"></section>
+
+  <!-- Section C: Per-Placement Guidance Tabs -->
+  <section id="placement-guidance-container"></section>
+
+  <!-- Section E: What a Piercer Can Actually Do -->
+  <section id="piercer-actions-container"></section>
+
+  <!-- Section G: After It Rejects (One line & link to keloid guide) -->
+  <section id="rejection-scar-container"></section>
+
+  <!-- Studio Disclaimer -->
+  <footer class="disclaimer-card">
+    <strong data-i18n="app.disclaimerTitle">Important Clinical Notice:</strong>
+    <span data-i18n="app.disclaimerBody">
+      This tool provides educational risk factor analysis and tracking based on established professional practice. It cannot diagnose active infection, rejection, or structural tissue damage. If you observe jewellery sinking into swollen tissue, progressive skin thinning, fever, extreme heat, or severe pain, see a professional body piercer or physician immediately. Never attempt to remove an actively migrating or embedded piercing yourself.
+    </span>
+  </footer>
+
+</main>
+
+<!-- Load i18n dictionary first, then app script -->
+<script src="./js/i18n.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>
